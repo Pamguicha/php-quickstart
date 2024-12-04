@@ -1,8 +1,14 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
+
+// Load the .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+
 //mongoDB connection parameters
-$mongoUri = 'mongodb+srv://admin:EI0BpM2D328d6Ry8@cluster0.i7bwr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+$mongoUri = `mongodb+srv://admin:` . $_ENV['DB_PASS'] . `@cluster0.i7bwr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 
 try {
